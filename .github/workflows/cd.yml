@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +25,7 @@ jobs:
       - id: auth
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_CREDS }}
+          credentials_json: ${{ secrets.GCP_CREDS2 }}
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
@@ -33,4 +34,4 @@ jobs:
         run: gcloud info
 
       - name: Build and push Docker image to GAR
-        run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely-473411/notely-ar-repo/notely:v1 .
+        run: gcloud builds submit --tag us-central1-docker.pkg.dev/notely2-473421/notely-ar-repo/notely:v1 .
